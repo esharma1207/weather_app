@@ -1,13 +1,13 @@
 const api_key = "26739281d4846f5ff47eb2b1cee63f79"
-const api_url = "https://api.openweathermap.org/data/2.5/weather?units=imperial"
+const api_url = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q="
 
 const searchbar = document.querySelector(".search input");
 const button = document.querySelector(".search button")
 const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city){
-    const res = await fetch(api_url + `&q=${city}`  + `&appid=${api_key}`);
-    if(res.status = 404)
+    const res = await fetch(api_url + city  + `&appid=${api_key}`);
+    if(res.status == 404)
     {
         document.querySelector(".error").style.display = "block";
         document.querySelector(".weather").style.display = "none";
@@ -39,6 +39,7 @@ async function checkWeather(city){
         weatherIcon.src = "images/mist.png";
     }
     document.querySelector(".weather").style.display = "block";
+    document.querySelector(".error").style.display = "none";
     
     }
 
