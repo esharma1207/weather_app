@@ -7,6 +7,12 @@ const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city){
     const res = await fetch(api_url + `&q=${city}`  + `&appid=${api_key}`);
+    if(res.status = 404)
+    {
+        document.querySelector(".error").style.display = "block";
+        document.querySelector(".weather").style.display = "none";
+    }
+    else{
     var data = await res.json()
 
     document.querySelector(".city").innerHTML = data.name;
@@ -33,7 +39,8 @@ async function checkWeather(city){
         weatherIcon.src = "images/mist.png";
     }
     document.querySelector(".weather").style.display = "block";
-
+    
+    }
 
 
 }
